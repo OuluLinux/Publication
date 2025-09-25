@@ -1,6 +1,6 @@
 # Publication
 
-A modular news publication and information system that labels political bias as extensions and categorizes stories using Debian-inspired sections (`world`, `universe`, `multiverse`, `nonfree`, and beyond). The platform emphasizes evidence networks, hypothesis graphs, transparent revisions, and AI awareness of knowledge gaps.
+A modular news publication and information system that labels political bias as extensions and categorizes stories using Debian-inspired sections (`world`, `universe`, `multiverse`, `nonfree`, and beyond). The platform emphasizes evidence networks, hypothesis graphs, transparent revisions, AI awareness of knowledge gaps, and neutral archival of conflicts without taking sides.
 
 ## Key Ideas
 - **Extensions:** Each desk declares its political orientation so readers understand the lens behind coverage.

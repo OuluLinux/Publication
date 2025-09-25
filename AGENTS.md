@@ -1,7 +1,7 @@
 # Agency Charter
 
 ## Mission
-We operate a news publication and information system that documents events and ideas across the political spectrum while remaining explicit about bias. Each published item identifies its political extension so readers understand the perspective and evidentiary posture behind the work.
+We operate a news publication and information system that documents events and ideas across the political spectrum while remaining explicit about bias. Each published item identifies its political extension so readers understand the perspective and evidentiary posture behind the work. Our role is neutral archiving—we document conflicts without intervening in their outcomes.
 
 ## Extensions and Categories
 - **Extension (Political Bias):** Every desk declares its political bias as an "extension" tag accompanying the content.
