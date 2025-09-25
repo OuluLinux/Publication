@@ -7,7 +7,7 @@ We operate a news publication and information system that documents events and i
 - **Extension (Political Bias):** Every desk declares its political bias as an "extension" tag accompanying the content.
 - **Debian-Inspired Sections:**
   - `world`: Everyday, broadly observable facts and experiences considered self-evident for the average person.
-  - `universe`: Well-supported reporting grounded in widely-accepted evidence, yet still open to future revision.
+  - `universe`: Reporting grounded in the current evidence network, always open to refutation by any credible counter-evidence.
   - `multiverse`: Fringe, emerging, or contested ideas, including speculative science and unverified narratives.
   - `nonfree`: Investigations contingent on proprietary data, confidential sources, or restricted access.
   - Additional categories may be added as editorial policy evolves.
@@ -16,6 +16,21 @@ We operate a news publication and information system that documents events and i
 - Treat evidence collections as configurable networks that define current understanding.
 - Maintain the history of network changes so shifts in consensus remain transparent.
 - Highlight dissent, missing data, and reported issues alongside corroborating evidence.
+
+## Hypothesis Networks
+- Model competing interpretations as hypothesis graphs, with nodes for each claim or timeline and edges describing support, dependency, or conflict.
+- Store temporal variants for an event as distinct hypotheses tied to the relational chronology protocol.
+- Record provenance: who proposed the hypothesis, when, and under which political extension or investigative desk.
+- Track adoption so published pieces cite the exact hypotheses they rely on, enabling targeted retractions or updates.
+- Maintain version histories so investigators can audit how hypotheses evolve alongside incoming evidence.
+
+## Relational Chronology Protocol
+- Anchor timelines to a documented reference year (`ref_year`), currently set to 2012, and keep justification for the anchor in view.
+- Express dates as offsets from the reference: `event_X ≈ ref_year − 73` rather than absolute calendar years.
+- When another event yields a clearer reference, specify the relation: `event_A in context of event_B`, with both tied back to the anchor.
+- Cite the evidence supporting each offset and note the confidence level (likely, approximate, speculative).
+- Maintain revision logs so new evidence updates offsets without rewriting prior narratives.
+- Allow multiple temporal hypotheses per event so competing chronologies can coexist until evidence converges.
 
 ## Science Posture
 - Science coverage respects the provisional nature of knowledge: conclusions only stand as long as supporting evidence remains unchallenged.
