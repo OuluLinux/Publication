@@ -1,0 +1,5 @@
+description "Long-form investigations with relational chronology views."
+uses
+	WtKernel;
+	CoreInfra;
+	Commentarium;

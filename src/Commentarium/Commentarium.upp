@@ -1,0 +1,4 @@
+description "Comments, moderation queue, hypothesis annotations."
+uses
+	WtKernel;
+	CoreInfra;

@@ -1,0 +1,4 @@
+description "Direct and team messaging for investigative coordination."
+uses
+	WtKernel;
+	CoreInfra;

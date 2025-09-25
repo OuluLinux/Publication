@@ -1,0 +1,4 @@
+description "Internal dashboards for evidence networks and chronologies."
+uses
+	WtKernel;
+	CoreInfra;

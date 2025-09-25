@@ -1,0 +1,5 @@
+description "Topic channels and community discussions."
+uses
+	WtKernel;
+	CoreInfra;
+	Commentarium;

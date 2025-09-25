@@ -1,0 +1,4 @@
+description "REST/WebSocket interfaces for clients and integrations."
+uses
+	WtKernel;
+	CoreInfra;

@@ -1,0 +1,4 @@
+description "Downloadable archives with checksums and version history."
+uses
+	WtKernel;
+	CoreInfra;

@@ -1,0 +1,7 @@
+<wt-config>
+  <application-settings location="*">
+    <debug>false</debug>
+    <debug-level>all</debug-level>
+  </application-settings>
+</wt-config>
+

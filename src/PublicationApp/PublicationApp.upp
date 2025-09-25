@@ -1,0 +1,11 @@
+description "Aggregate package producing the deployable Wt application.\377";
+
+uses
+	WtKernel,
+	PublicSuite,
+	InternalSuite,
+	OpsSuite;
+
+file
+	main.cpp;
+

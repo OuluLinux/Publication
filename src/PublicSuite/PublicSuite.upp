@@ -1,0 +1,12 @@
+description "Aggregates public-facing experience modules.\377B0,0,255";
+
+uses
+	FrontPortal,
+	Streamline,
+	MomentsDesk,
+	ChroniclePosts,
+	Commentarium,
+	SignalForums,
+	SyncStream,
+	StaticAssets;
+

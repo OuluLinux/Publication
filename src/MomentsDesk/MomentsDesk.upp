@@ -1,0 +1,5 @@
+description "Curated narrative bundles combining posts and evidence timelines."
+uses
+	WtKernel;
+	CoreInfra;
+	Streamline;

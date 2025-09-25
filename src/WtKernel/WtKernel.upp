@@ -1,0 +1,8 @@
+description "Shared Wt bootstrap, routing, auth, deployment toggles.\377B128,0,0";
+
+uses
+	CoreInfra;
+
+library
+	"wt wthttp";
+
