@@ -23,7 +23,7 @@ public:
         : Wt::WApplication(env) {
         setTitle("Publication");
         configureTheme();
-        injectInlineStyle();
+        loadAssets();
         buildInterface();
     }
 
@@ -35,155 +35,11 @@ private:
         setBodyClass("publication-app");
     }
 
-    void injectInlineStyle() {
-        static const char* kInlineCss = R"CSS(
-<style>
-:root {
-  --news-ink: #1f1a17;
-  --news-page: #f3efe3;
-  --news-border: #c4bca6;
-  --news-highlight: #af3d2b;
-  --news-muted: #5f574f;
-}
-body.publication-app {
-  background: var(--news-page);
-  color: var(--news-ink);
-  font-family: "Georgia", "Times New Roman", serif;
-  margin: 0;
-}
-#publication-root {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
-}
-.masthead {
-  text-align: center;
-  border-bottom: 3px double var(--news-border);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-}
-.masthead .brand {
-  font-size: 3rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0;
-}
-.masthead .tagline {
-  font-size: 0.9rem;
-  color: var(--news-muted);
-  margin: 0.2rem 0 0;
-}
-.dateline {
-  font-size: 0.85rem;
-  color: var(--news-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  margin-top: 0.3rem;
-}
-.section-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  border-bottom: 1px solid var(--news-border);
-  border-top: 1px solid var(--news-border);
-  padding: 0.45rem 0;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-.section-nav span {
-  cursor: default;
-}
-.layout {
-  display: grid;
-  grid-template-columns: 2.1fr 1.2fr;
-  gap: 1.5rem;
-}
-.lead-story {
-  border-bottom: 1px solid var(--news-border);
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-.lead-story h1 {
-  font-size: 2rem;
-  margin: 0;
-}
-.lead-story .dek {
-  font-size: 1rem;
-  margin: 0.6rem 0 0.8rem;
-  color: var(--news-muted);
-}
-.timestamp {
-  font-size: 0.8rem;
-  color: var(--news-muted);
-  text-transform: uppercase;
-}
-.column h2 {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--news-border);
-  margin: 0 0 0.5rem;
-  padding-bottom: 0.4rem;
-}
-.story-index {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.story-index li {
-  margin-bottom: 0.8rem;
-  border-bottom: 1px dotted var(--news-border);
-  padding-bottom: 0.7rem;
-}
-.story-index .headline {
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-.story-index .dek {
-  font-size: 0.9rem;
-  color: var(--news-muted);
-  margin-top: 0.3rem;
-}
-.ticker {
-  background: rgba(0,0,0,0.05);
-  border-top: 1px solid var(--news-border);
-  border-bottom: 1px solid var(--news-border);
-  padding: 0.6rem 0.8rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-}
-.ticker strong {
-  color: var(--news-highlight);
-  text-transform: uppercase;
-  margin-right: 0.8rem;
-}
-.footnote {
-  text-align: center;
-  font-size: 0.78rem;
-  color: var(--news-muted);
-  margin-top: 2rem;
-  border-top: 1px solid var(--news-border);
-  padding-top: 1rem;
-}
-@media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 600px) {
-  #publication-root {
-    padding: 1rem 0.7rem 2.5rem;
-  }
-  .masthead .brand {
-    font-size: 2.2rem;
-  }
-}
-</style>
-)CSS";
-
-        auto style = root()->addWidget(std::make_unique<Wt::WText>(kInlineCss));
-        style->setTextFormat(Wt::TextFormat::UnsafeXHTML);
+    void loadAssets() {
+        useStyleSheet("css/retro.css");
+        auto script = root()->addWidget(std::make_unique<Wt::WText>(
+            "<script src=\"js/retro.js\" defer></script>"));
+        script->setTextFormat(Wt::TextFormat::UnsafeXHTML);
     }
 
     void buildInterface() {
@@ -210,21 +66,33 @@ body.publication-app {
         auto nav = root()->addWidget(std::make_unique<Wt::WContainerWidget>());
         nav->setStyleClass("section-nav");
 
-        nav->addWidget(std::make_unique<Wt::WText>(
-            "<span>World</span><span>Universe</span><span>Multiverse</span><span>Nonfree</span><span>Opinion</span>"))->
-            setTextFormat(Wt::TextFormat::UnsafeXHTML);
+        auto navText = nav->addWidget(std::make_unique<Wt::WText>(
+            "<span>World</span><span>Universe</span><span>Multiverse</span><span>Nonfree</span><span>Opinion</span>"));
+        navText->setTextFormat(Wt::TextFormat::UnsafeXHTML);
     }
 
     void buildTicker() {
+        static const std::vector<std::string> items = {
+            "Evidence logs updated for river-delta contamination study",
+            "Hypothesis 41A marked contested after auditor filing",
+            "Relational offsets revised for civic budget hearings",
+            "Extension filings open for public review this week"
+        };
+
         auto ticker = root()->addWidget(std::make_unique<Wt::WContainerWidget>());
         ticker->setStyleClass("ticker");
 
-        const std::string line =
-            "<strong>Ticker</strong>Evidence logs updated for river-delta contamination study ·"
-            " Hypothesis 41A marked contested · Relational offsets revised for civic budget hearings.";
+        auto label = ticker->addWidget(std::make_unique<Wt::WText>("<span class=\"ticker-label\">Ticker</span>"));
+        label->setTextFormat(Wt::TextFormat::UnsafeXHTML);
 
-        auto text = ticker->addWidget(std::make_unique<Wt::WText>(line));
-        text->setTextFormat(Wt::TextFormat::UnsafeXHTML);
+        auto track = ticker->addWidget(std::make_unique<Wt::WContainerWidget>());
+        track->setStyleClass("ticker-track");
+
+        for (const auto& item : items) {
+            auto entry = track->addWidget(std::make_unique<Wt::WText>(
+                "<span class=\"ticker-item\">" + item + "</span>"));
+            entry->setTextFormat(Wt::TextFormat::UnsafeXHTML);
+        }
     }
 
     void buildLayout() {
@@ -263,10 +131,12 @@ body.publication-app {
         layout->setStyleClass("layout");
 
         auto columnLead = layout->addWidget(std::make_unique<Wt::WContainerWidget>());
+        columnLead->setStyleClass("column column-front");
         buildLeadStory(columnLead, lead);
         buildStoryList(columnLead, "Front Page", columnOne);
 
         auto columnIndex = layout->addWidget(std::make_unique<Wt::WContainerWidget>());
+        columnIndex->setStyleClass("column column-index");
         buildStoryList(columnIndex, "Ledger Highlights", columnTwo);
     }
 
