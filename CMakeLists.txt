@@ -10,10 +10,11 @@ set(PUBLICATION_SOURCES
 )
 
 find_package(Wt REQUIRED COMPONENTS Wt HTTP)
+find_package(SQLite3 REQUIRED)
 
 add_executable(${PROJECT_NAME} ${PUBLICATION_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Wt::Wt Wt::HTTP)
+target_link_libraries(${PROJECT_NAME} PRIVATE Wt::Wt Wt::HTTP SQLite::SQLite3)
 
 target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -pedantic>
